@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: src/settings.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: src/settings.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import fetch from 'node-fetch';
+
+/**
+ * Client for GeoServer settings.
+ *
+ * @module SettingsClient
+ */
+export default class SettingsClient {
+  /**
+   * Creates a GeoServer REST SettingsClient instance.
+   *
+   * @param {String} url The URL of the GeoServer REST API endpoint
+   * @param {String} user The user for the GeoServer REST API
+   * @param {String} password The password for the GeoServer REST API
+   */
+  constructor(url, user, password) {
+    this.url = url.endsWith('/') ? url : url + '/';
+    this.user = user;
+    this.password = password;
+  }
+
+  /**
+   * Get the contact information of the GeoServer.
+   * 
+   * @returns {Object|Boolean} An object with contact information or 'false'
+   */
+  async getContactInformation() {
+    try {
+      const auth =
+        Buffer.from(this.user + ':' + this.password).toString('base64');
+      const response = await fetch(this.url + 'settings/contact', {
+        credentials: 'include',
+        method: 'GET',
+        headers: {
+          Authorization: 'Basic ' + auth
+        }
+      });
+      return await response.json();
+    } catch (error) {
+      return false;
+    }
+  }
+
+  /**
+   * Update the contact information.
+   * 
+   * Deleting is not supported.
+   * 
+   * @param {String} [address] The contact's address
+   * @param {String} [city] The contact's city
+   * @param {String} [country] The contact's country
+   * @param {String} [postalCode] The contact's postCode
+   * @param {String} [state] The contact's state
+   * @param {String} [email] The contact's email
+   * @param {String} [organization] The contact's organization
+   * @param {String} [contactPerson] The contact person
+   * @param {String} [phoneNumber] The contact's phone number
+   * 
+   * @returns {Boolean} If contact information could be updated.
+   */
+  async updateContactInformation(address, city, country, postalCode, state, email, organization, contactPerson, phoneNumber) {
+    try {
+      let contact = {};
+      contact.address = address;
+      contact.addressCity = city;
+      contact.addressCountry = country;
+      contact.addressPostalCode = postalCode;
+      contact.addressState = state;
+      contact.contactEmail = email;
+      contact.contactOrganization = organization;
+      contact.contactPerson = contactPerson;
+      contact.contactVoice = phoneNumber;
+
+      const body = {
+        contact: contact
+      };
+
+      const auth = Buffer.from(this.user + ':' + this.password).toString('base64');
+      const url = this.url + 'settings/contact';
+      const response = await fetch(url, {
+        credentials: 'include',
+        method: 'PUT',
+        headers: {
+          Authorization: 'Basic ' + auth,
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(body)
+      });
+
+      if (response.status === 200) {
+        return true;
+      } else {
+        console.warn(await response.text());
+        return false;
+      }
+    } catch (error) {
+      console.log(error);
+      return false;
+    }
+  }
+}
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-DatastoreClient.html">DatastoreClient</a></li><li><a href="module-GeoServerRestClient.html">GeoServerRestClient</a></li><li><a href="module-ImageMosaicClient.html">ImageMosaicClient</a></li><li><a href="module-LayerClient.html">LayerClient</a></li><li><a href="module-SecurityClient.html">SecurityClient</a></li><li><a href="module-SettingsClient.html">SettingsClient</a></li><li><a href="module-StyleClient.html">StyleClient</a></li><li><a href="module-WorkspaceClient.html">WorkspaceClient</a></li></ul><h3>Classes</h3><ul><li><a href="module-DatastoreClient.html">DatastoreClient</a></li><li><a href="module-GeoServerRestClient.html">GeoServerRestClient</a></li><li><a href="module-ImageMosaicClient.html">ImageMosaicClient</a></li><li><a href="module-LayerClient.html">LayerClient</a></li><li><a href="module-SecurityClient.html">SecurityClient</a></li><li><a href="module-SettingsClient.html">SettingsClient</a></li><li><a href="module-StyleClient.html">StyleClient</a></li><li><a href="module-WorkspaceClient.html">WorkspaceClient</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.6</a> on Wed Mar 10 2021 13:43:24 GMT+0000 (Coordinated Universal Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
