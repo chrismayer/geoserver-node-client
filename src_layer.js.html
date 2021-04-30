@@ -78,6 +78,52 @@ export default class LayerClient {
   }
 
   /**
+   * Sets the attribution text and link of a layer.
+   *
+   * @param {String} qualifiedName GeoServer layer name with workspace prefix
+   * @param {String} [attributionText] The attribution text
+   * @param {String} [attributionLink] The attribution link
+   *
+   * @returns {Boolean} If attribution could be updated
+   */
+  async modifyAttribution (qualifiedName, attributionText, attributionLink) {
+    try {
+      // take existing layer properties as template
+      const jsonBody = await this.get(qualifiedName);
+
+      // set attribution text and link
+      if (attributionText) {
+        jsonBody.layer.attribution.title = attributionText;
+      }
+      if (attributionLink) {
+        jsonBody.layer.attribution.href = attributionLink;
+      }
+
+      const auth = Buffer.from(this.user + ':' + this.password).toString('base64');
+      const url = this.url + 'layers/' + qualifiedName + '.json';
+      const response = await fetch(url, {
+        credentials: 'include',
+        method: 'PUT',
+        headers: {
+          Authorization: 'Basic ' + auth,
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(jsonBody)
+      });
+
+      if (response.status === 200) {
+        return true;
+      } else {
+        console.warn(await response.text());
+        return false;
+      }
+    } catch (error) {
+      console.log(error);
+      return false;
+    }
+  }
+
+  /**
    * Returns all layers in the GeoServer.
    *
    * @returns {Object|Boolean} An object with all layer information or 'false'
@@ -113,10 +159,11 @@ export default class LayerClient {
    * @param {String} [title] Published title of FeatureType
    * @param {String} [srs="EPSG:4326"] The SRS of the FeatureType
    * @param {String} enabled Flag to enable FeatureType by default
+   * @param {String} [abstract] The abstract of the layer
    *
    * @returns {Boolean} If FeatureType could be published.
    */
-  async publishFeatureTypeDefaultDataStore (workspace, nativeName, name, title, srs, enabled) {
+  async publishFeatureTypeDefaultDataStore (workspace, nativeName, name, title, srs, enabled, abstract) {
     try {
       const body = {
         featureType: {
@@ -124,7 +171,8 @@ export default class LayerClient {
           nativeName: name,
           title: title || name,
           srs: srs || 'EPSG:4326',
-          enabled: enabled
+          enabled: enabled,
+          abstract: abstract || ''
         }
       };
 
@@ -160,10 +208,11 @@ export default class LayerClient {
    * @param {String} [title] Published title of FeatureType
    * @param {String} [srs="EPSG:4326"] The SRS of the FeatureType
    * @param {String} enabled Flag to enable FeatureType by default
+   * @param {String} [abstract] The abstract of the layer
    *
    * @returns {Boolean} If the FeatureType could be published
    */
-  async publishFeatureType (workspace, dataStore, nativeName, name, title, srs, enabled) {
+  async publishFeatureType (workspace, dataStore, nativeName, name, title, srs, enabled, abstract) {
     try {
       const body = {
         featureType: {
@@ -171,7 +220,8 @@ export default class LayerClient {
           nativeName: nativeName,
           title: title || name,
           srs: srs || 'EPSG:4326',
-          enabled: enabled
+          enabled: enabled,
+          abstract: abstract || ''
         }
       };
 
@@ -207,10 +257,11 @@ export default class LayerClient {
    * @param {String} [title] Published title of WMS layer
    * @param {String} [srs="EPSG:4326"] The SRS of the WMS layer
    * @param {String} enabled Flag to enable WMS layer by default
+   * @param {String} [abstract] The abstract of the layer
    *
    * @returns {Boolean} If the wms layer could be published
    */
-  async publishWmsLayer (workspace, dataStore, nativeName, name, title, srs, enabled) {
+  async publishWmsLayer (workspace, dataStore, nativeName, name, title, srs, enabled, abstract) {
     try {
       const body = {
         wmsLayer: {
@@ -218,7 +269,8 @@ export default class LayerClient {
           nativeName: nativeName,
           title: title || name || nativeName,
           srs: srs || 'EPSG:4326',
-          enabled: enabled
+          enabled: enabled,
+          abstract: abstract || ''
         }
       };
 
@@ -254,10 +306,11 @@ export default class LayerClient {
    * @param {String} [title] Published title of layer
    * @param {String} [srs="EPSG:4326"] The SRS of the layer
    * @param {String} enabled Flag to enable layer by default
+   * @param {String} [abstract] The abstract of the layer
    *
    * @returns {Boolean} If raster could be published
    */
-  async publishDbRaster (workspace, coverageStore, nativeName, name, title, srs, enabled) {
+  async publishDbRaster (workspace, coverageStore, nativeName, name, title, srs, enabled, abstract) {
     try {
       const body = {
         coverage: {
@@ -265,7 +318,8 @@ export default class LayerClient {
           nativeName: nativeName,
           title: title || name,
           srs: srs,
-          enabled: enabled
+          enabled: enabled,
+          abstract: abstract || ''
         }
       };
 
@@ -468,7 +522,7 @@ export default class LayerClient {
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.6</a> on Fri Mar 12 2021 11:49:40 GMT+0000 (Coordinated Universal Time)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.6</a> on Fri Apr 30 2021 12:59:22 GMT+0000 (Coordinated Universal Time)
 </footer>
 
 <script> prettyPrint(); </script>
