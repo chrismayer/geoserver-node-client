@@ -414,7 +414,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="src_layer.js.html">src/layer.js</a>, <a href="src_layer.js.html#line329">line 329</a>
+        <a href="src_layer.js.html">src/layer.js</a>, <a href="src_layer.js.html#line339">line 339</a>
     </li></ul></dd>
     
 
@@ -804,7 +804,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="src_layer.js.html">src/layer.js</a>, <a href="src_layer.js.html#line365">line 365</a>
+        <a href="src_layer.js.html">src/layer.js</a>, <a href="src_layer.js.html#line375">line 375</a>
     </li></ul></dd>
     
 
@@ -1246,7 +1246,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="src_layer.js.html">src/layer.js</a>, <a href="src_layer.js.html#line431">line 431</a>
+        <a href="src_layer.js.html">src/layer.js</a>, <a href="src_layer.js.html#line441">line 441</a>
     </li></ul></dd>
     
 
@@ -1549,6 +1549,214 @@ e.g. "myWs:myLayer".
         
 <div class="param-desc">
     An object with all layer information or 'false'
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Object</span>
+|
+
+<span class="param-type">Boolean</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="getCoverage"><span class="type-signature">(async) </span>getCoverage<span class="signature">(workspace, coverageStore, name)</span><span class="type-signature"> &rarr; {Object|Boolean}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Returns a dedicated coverage object.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>workspace</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Workspace containing the coverage</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>coverageStore</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The coveragestore containing the coverage</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>name</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Coverage to query</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="src_layer.js.html">src/layer.js</a>, <a href="src_layer.js.html#line500">line 500</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    An object with coverage information or 'false'
 </div>
 
 
@@ -2185,7 +2393,7 @@ e.g. "myWs:myLayer".
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="src_layer.js.html">src/layer.js</a>, <a href="src_layer.js.html#line285">line 285</a>
+        <a href="src_layer.js.html">src/layer.js</a>, <a href="src_layer.js.html#line295">line 295</a>
     </li></ul></dd>
     
 
@@ -2243,7 +2451,7 @@ e.g. "myWs:myLayer".
     
 
     
-    <h4 class="name" id="publishFeatureType"><span class="type-signature">(async) </span>publishFeatureType<span class="signature">(workspace, dataStore, nativeName<span class="signature-attributes">opt</span>, name, title<span class="signature-attributes">opt</span>, srs<span class="signature-attributes">opt</span>, enabled, abstract<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {Boolean}</span></h4>
+    <h4 class="name" id="publishFeatureType"><span class="type-signature">(async) </span>publishFeatureType<span class="signature">(workspace, dataStore, nativeName<span class="signature-attributes">opt</span>, name, title<span class="signature-attributes">opt</span>, srs<span class="signature-attributes">opt</span>, enabled, abstract<span class="signature-attributes">opt</span>, nativeBoundingBox<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {Boolean}</span></h4>
     
 
     
@@ -2578,6 +2786,43 @@ e.g. "myWs:myLayer".
         </tr>
 
     
+
+        <tr>
+            
+                <td class="name"><code>nativeBoundingBox</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                </td>
+            
+
+            <td class="description last">The native BoundingBox of the FeatureType (has to be set if no data is in store at creation time)</td>
+        </tr>
+
+    
     </tbody>
 </table>
 
@@ -2615,7 +2860,7 @@ e.g. "myWs:myLayer".
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="src_layer.js.html">src/layer.js</a>, <a href="src_layer.js.html#line187">line 187</a>
+        <a href="src_layer.js.html">src/layer.js</a>, <a href="src_layer.js.html#line188">line 188</a>
     </li></ul></dd>
     
 
@@ -3440,7 +3685,7 @@ e.g. "myWs:myLayer".
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="src_layer.js.html">src/layer.js</a>, <a href="src_layer.js.html#line236">line 236</a>
+        <a href="src_layer.js.html">src/layer.js</a>, <a href="src_layer.js.html#line246">line 246</a>
     </li></ul></dd>
     
 
@@ -3508,13 +3753,13 @@ e.g. "myWs:myLayer".
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-DatastoreClient.html">DatastoreClient</a></li><li><a href="module-GeoServerRestClient.html">GeoServerRestClient</a></li><li><a href="module-ImageMosaicClient.html">ImageMosaicClient</a></li><li><a href="module-LayerClient.html">LayerClient</a></li><li><a href="module-SecurityClient.html">SecurityClient</a></li><li><a href="module-SettingsClient.html">SettingsClient</a></li><li><a href="module-StyleClient.html">StyleClient</a></li><li><a href="module-WorkspaceClient.html">WorkspaceClient</a></li></ul><h3>Classes</h3><ul><li><a href="module-DatastoreClient.html">DatastoreClient</a></li><li><a href="module-GeoServerRestClient.html">GeoServerRestClient</a></li><li><a href="module-ImageMosaicClient.html">ImageMosaicClient</a></li><li><a href="module-LayerClient.html">LayerClient</a></li><li><a href="module-SecurityClient.html">SecurityClient</a></li><li><a href="module-SettingsClient.html">SettingsClient</a></li><li><a href="module-StyleClient.html">StyleClient</a></li><li><a href="module-WorkspaceClient.html">WorkspaceClient</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-DatastoreClient.html">DatastoreClient</a></li><li><a href="module-GeoServerRestClient.html">GeoServerRestClient</a></li><li><a href="module-ImageMosaicClient.html">ImageMosaicClient</a></li><li><a href="module-LayerClient.html">LayerClient</a></li><li><a href="module-NamespaceClient.html">NamespaceClient</a></li><li><a href="module-SecurityClient.html">SecurityClient</a></li><li><a href="module-SettingsClient.html">SettingsClient</a></li><li><a href="module-StyleClient.html">StyleClient</a></li><li><a href="module-WorkspaceClient.html">WorkspaceClient</a></li></ul><h3>Classes</h3><ul><li><a href="module-DatastoreClient.html">DatastoreClient</a></li><li><a href="module-GeoServerRestClient.html">GeoServerRestClient</a></li><li><a href="module-ImageMosaicClient.html">ImageMosaicClient</a></li><li><a href="module-LayerClient.html">LayerClient</a></li><li><a href="module-NamespaceClient.html">NamespaceClient</a></li><li><a href="module-SecurityClient.html">SecurityClient</a></li><li><a href="module-SettingsClient.html">SettingsClient</a></li><li><a href="module-StyleClient.html">StyleClient</a></li><li><a href="module-WorkspaceClient.html">WorkspaceClient</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.6</a> on Fri Apr 30 2021 12:59:22 GMT+0000 (Coordinated Universal Time)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.6</a> on Mon Jul 26 2021 10:20:09 GMT+0000 (Coordinated Universal Time)
 </footer>
 
 <script> prettyPrint(); </script>
