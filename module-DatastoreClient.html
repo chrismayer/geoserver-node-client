@@ -28,7 +28,7 @@
 
 <header>
     
-        <h2><span class="attribs"><span class="type-signature"></span></span>module:DatastoreClient<span class="signature">(url, user, password)</span><span class="type-signature"></span></h2>
+        <h2><span class="attribs"><span class="type-signature"></span></span>module:DatastoreClient<span class="signature">(url, auth)</span><span class="type-signature"></span></h2>
         
     
 </header>
@@ -41,7 +41,7 @@
     
 
     
-    <h4 class="name" id="module:DatastoreClient"><span class="type-signature"></span>new module:DatastoreClient<span class="signature">(url, user, password)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="module:DatastoreClient"><span class="type-signature"></span>new module:DatastoreClient<span class="signature">(url, auth)</span><span class="type-signature"></span></h4>
     
 
     
@@ -108,7 +108,7 @@
 
         <tr>
             
-                <td class="name"><code>user</code></td>
+                <td class="name"><code>auth</code></td>
             
 
             <td class="type">
@@ -124,30 +124,7 @@
 
             
 
-            <td class="description last">The user for the GeoServer REST API</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>password</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">String</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">The password for the GeoServer REST API</td>
+            <td class="description last">The Basic Authentication string</td>
         </tr>
 
     
@@ -188,7 +165,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="src_datastore.js.html">src/datastore.js</a>, <a href="src_datastore.js.html#line17">line 17</a>
+        <a href="src_datastore.js.html">src/datastore.js</a>, <a href="src_datastore.js.html#line18">line 18</a>
     </li></ul></dd>
     
 
@@ -244,7 +221,7 @@
     
 
     
-    <h4 class="name" id="createGeotiffFromFile"><span class="type-signature">(async) </span>createGeotiffFromFile<span class="signature">(workspace, coverageStore, layerName, layerTitle, filePath)</span><span class="type-signature"> &rarr; {String|Boolean}</span></h4>
+    <h4 class="name" id="createGeotiffFromFile"><span class="type-signature">(async) </span>createGeotiffFromFile<span class="signature">(workspace, coverageStore, layerName, layerTitle, filePath)</span><span class="type-signature"> &rarr; {String}</span></h4>
     
 
     
@@ -439,7 +416,7 @@ is running.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="src_datastore.js.html">src/datastore.js</a>, <a href="src_datastore.js.html#line192">line 192</a>
+        <a href="src_datastore.js.html">src/datastore.js</a>, <a href="src_datastore.js.html#line193">line 193</a>
     </li></ul></dd>
     
 
@@ -462,13 +439,25 @@ is running.
 
 
 
+<h5>Throws:</h5>
+
+        
+
+    <div class="param-desc">
+    
+        Error if request fails
+    
+    </div>
+
+
+    
 
 
 <h5>Returns:</h5>
 
         
 <div class="param-desc">
-    The successful response text or 'false'
+    The successful response text
 </div>
 
 
@@ -480,9 +469,6 @@ is running.
     <dd>
         
 <span class="param-type">String</span>
-|
-
-<span class="param-type">Boolean</span>
 
 
     </dd>
@@ -500,7 +486,7 @@ is running.
     
 
     
-    <h4 class="name" id="createGpkgStore"><span class="type-signature">(async) </span>createGpkgStore<span class="signature">(workspace, dataStore, gpkgPath)</span><span class="type-signature"> &rarr; {Boolean}</span></h4>
+    <h4 class="name" id="createGpkgStore"><span class="type-signature">(async) </span>createGpkgStore<span class="signature">(workspace, dataStore, gpkgPath)</span><span class="type-signature"></span></h4>
     
 
     
@@ -647,7 +633,7 @@ is running.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="src_datastore.js.html">src/datastore.js</a>, <a href="src_datastore.js.html#line540">line 540</a>
+        <a href="src_datastore.js.html">src/datastore.js</a>, <a href="src_datastore.js.html#line505">line 505</a>
     </li></ul></dd>
     
 
@@ -670,30 +656,20 @@ is running.
 
 
 
-
-
-<h5>Returns:</h5>
+<h5>Throws:</h5>
 
         
-<div class="param-desc">
-    If store could be created
-</div>
 
+    <div class="param-desc">
+    
+        Error if request fails
+    
+    </div>
 
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">Boolean</span>
-
-
-    </dd>
-</dl>
 
     
+
+
 
 
 
@@ -705,7 +681,7 @@ is running.
     
 
     
-    <h4 class="name" id="createImageMosaicStore"><span class="type-signature">(async) </span>createImageMosaicStore<span class="signature">(workspace, dataStore, zipArchivePath)</span><span class="type-signature"> &rarr; {String|Boolen}</span></h4>
+    <h4 class="name" id="createImageMosaicStore"><span class="type-signature">(async) </span>createImageMosaicStore<span class="signature">(workspace, dataStore, zipArchivePath)</span><span class="type-signature"> &rarr; {String}</span></h4>
     
 
     
@@ -817,7 +793,7 @@ placed on the server, where your GeoServer is running.
 
             
 
-            <td class="description last">Aboslute path to zip archive with the 3 properties files</td>
+            <td class="description last">Absolute path to zip archive with the 3 properties files</td>
         </tr>
 
     
@@ -858,7 +834,7 @@ placed on the server, where your GeoServer is running.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="src_datastore.js.html">src/datastore.js</a>, <a href="src_datastore.js.html#line331">line 331</a>
+        <a href="src_datastore.js.html">src/datastore.js</a>, <a href="src_datastore.js.html#line324">line 324</a>
     </li></ul></dd>
     
 
@@ -881,13 +857,25 @@ placed on the server, where your GeoServer is running.
 
 
 
+<h5>Throws:</h5>
+
+        
+
+    <div class="param-desc">
+    
+        Error if request fails
+    
+    </div>
+
+
+    
 
 
 <h5>Returns:</h5>
 
         
 <div class="param-desc">
-    The response text or 'false'
+    The response text
 </div>
 
 
@@ -899,9 +887,6 @@ placed on the server, where your GeoServer is running.
     <dd>
         
 <span class="param-type">String</span>
-|
-
-<span class="param-type">Boolen</span>
 
 
     </dd>
@@ -919,7 +904,7 @@ placed on the server, where your GeoServer is running.
     
 
     
-    <h4 class="name" id="createPostgisStore"><span class="type-signature">(async) </span>createPostgisStore<span class="signature">(workspace, namespaceUri, dataStore, pgHost, pgPort, pgUser, pgPassword, pgSchema, pgDb, exposePk<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {Boolean}</span></h4>
+    <h4 class="name" id="createPostgisStore"><span class="type-signature">(async) </span>createPostgisStore<span class="signature">(workspace, namespaceUri, dataStore, pgHost, pgPort, pgUser, pgPassword, pgSchema, pgDb, exposePk<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span></h4>
     
 
     
@@ -1311,7 +1296,7 @@ placed on the server, where your GeoServer is running.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="src_datastore.js.html">src/datastore.js</a>, <a href="src_datastore.js.html#line243">line 243</a>
+        <a href="src_datastore.js.html">src/datastore.js</a>, <a href="src_datastore.js.html#line237">line 237</a>
     </li></ul></dd>
     
 
@@ -1334,30 +1319,20 @@ placed on the server, where your GeoServer is running.
 
 
 
-
-
-<h5>Returns:</h5>
+<h5>Throws:</h5>
 
         
-<div class="param-desc">
-    If the store could be created
-</div>
 
+    <div class="param-desc">
+    
+        Error if request fails
+    
+    </div>
 
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">Boolean</span>
-
-
-    </dd>
-</dl>
 
     
+
+
 
 
 
@@ -1369,7 +1344,7 @@ placed on the server, where your GeoServer is running.
     
 
     
-    <h4 class="name" id="createWfsStore"><span class="type-signature">(async) </span>createWfsStore<span class="signature">(workspace, dataStore, wfsCapabilitiesUrl, namespaceUrl, useHttpConnectionPooling<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {Boolean}</span></h4>
+    <h4 class="name" id="createWfsStore"><span class="type-signature">(async) </span>createWfsStore<span class="signature">(workspace, dataStore, wfsCapabilitiesUrl, namespaceUrl, useHttpConnectionPooling<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span></h4>
     
 
     
@@ -1630,7 +1605,7 @@ placed on the server, where your GeoServer is running.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="src_datastore.js.html">src/datastore.js</a>, <a href="src_datastore.js.html#line408">line 408</a>
+        <a href="src_datastore.js.html">src/datastore.js</a>, <a href="src_datastore.js.html#line392">line 392</a>
     </li></ul></dd>
     
 
@@ -1653,30 +1628,20 @@ placed on the server, where your GeoServer is running.
 
 
 
-
-
-<h5>Returns:</h5>
+<h5>Throws:</h5>
 
         
-<div class="param-desc">
-    If store could be created
-</div>
 
+    <div class="param-desc">
+    
+        Error if request fails
+    
+    </div>
 
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">Boolean</span>
-
-
-    </dd>
-</dl>
 
     
+
+
 
 
 
@@ -1688,7 +1653,7 @@ placed on the server, where your GeoServer is running.
     
 
     
-    <h4 class="name" id="createWmsStore"><span class="type-signature">(async) </span>createWmsStore<span class="signature">(workspace, dataStore, wmsCapabilitiesUrl)</span><span class="type-signature"> &rarr; {Boolean}</span></h4>
+    <h4 class="name" id="createWmsStore"><span class="type-signature">(async) </span>createWmsStore<span class="signature">(workspace, dataStore, wmsCapabilitiesUrl)</span><span class="type-signature"></span></h4>
     
 
     
@@ -1835,7 +1800,7 @@ placed on the server, where your GeoServer is running.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="src_datastore.js.html">src/datastore.js</a>, <a href="src_datastore.js.html#line367">line 367</a>
+        <a href="src_datastore.js.html">src/datastore.js</a>, <a href="src_datastore.js.html#line355">line 355</a>
     </li></ul></dd>
     
 
@@ -1858,30 +1823,20 @@ placed on the server, where your GeoServer is running.
 
 
 
-
-
-<h5>Returns:</h5>
+<h5>Throws:</h5>
 
         
-<div class="param-desc">
-    If store could be created
-</div>
 
+    <div class="param-desc">
+    
+        Error if request fails
+    
+    </div>
 
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">Boolean</span>
-
-
-    </dd>
-</dl>
 
     
+
+
 
 
 
@@ -1893,7 +1848,7 @@ placed on the server, where your GeoServer is running.
     
 
     
-    <h4 class="name" id="deleteCoverageStore"><span class="type-signature">(async) </span>deleteCoverageStore<span class="signature">(workspace, coverageStore, recurse)</span><span class="type-signature"> &rarr; {Boolean}</span></h4>
+    <h4 class="name" id="deleteCoverageStore"><span class="type-signature">(async) </span>deleteCoverageStore<span class="signature">(workspace, coverageStore, recurse)</span><span class="type-signature"></span></h4>
     
 
     
@@ -2040,7 +1995,7 @@ placed on the server, where your GeoServer is running.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="src_datastore.js.html">src/datastore.js</a>, <a href="src_datastore.js.html#line501">line 501</a>
+        <a href="src_datastore.js.html">src/datastore.js</a>, <a href="src_datastore.js.html#line471">line 471</a>
     </li></ul></dd>
     
 
@@ -2063,30 +2018,20 @@ placed on the server, where your GeoServer is running.
 
 
 
-
-
-<h5>Returns:</h5>
+<h5>Throws:</h5>
 
         
-<div class="param-desc">
-    If the datastore could be deleted
-</div>
 
+    <div class="param-desc">
+    
+        Error if request fails
+    
+    </div>
 
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">Boolean</span>
-
-
-    </dd>
-</dl>
 
     
+
+
 
 
 
@@ -2098,7 +2043,7 @@ placed on the server, where your GeoServer is running.
     
 
     
-    <h4 class="name" id="deleteDataStore"><span class="type-signature">(async) </span>deleteDataStore<span class="signature">(workspace, coverageStore, recurse)</span><span class="type-signature"> &rarr; {Boolean}</span></h4>
+    <h4 class="name" id="deleteDataStore"><span class="type-signature">(async) </span>deleteDataStore<span class="signature">(workspace, coverageStore, recurse)</span><span class="type-signature"></span></h4>
     
 
     
@@ -2245,7 +2190,7 @@ placed on the server, where your GeoServer is running.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="src_datastore.js.html">src/datastore.js</a>, <a href="src_datastore.js.html#line462">line 462</a>
+        <a href="src_datastore.js.html">src/datastore.js</a>, <a href="src_datastore.js.html#line442">line 442</a>
     </li></ul></dd>
     
 
@@ -2268,30 +2213,20 @@ placed on the server, where your GeoServer is running.
 
 
 
-
-
-<h5>Returns:</h5>
+<h5>Throws:</h5>
 
         
-<div class="param-desc">
-    If the datastore could be deleted
-</div>
 
+    <div class="param-desc">
+    
+        Error if request fails
+    
+    </div>
 
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">Boolean</span>
-
-
-    </dd>
-</dl>
 
     
+
+
 
 
 
@@ -2303,7 +2238,7 @@ placed on the server, where your GeoServer is running.
     
 
     
-    <h4 class="name" id="getCoverageStore"><span class="type-signature">(async) </span>getCoverageStore<span class="signature">(workspace, covStore)</span><span class="type-signature"> &rarr; {Object|Boolean}</span></h4>
+    <h4 class="name" id="getCoverageStore"><span class="type-signature">(async) </span>getCoverageStore<span class="signature">(workspace, covStore)</span><span class="type-signature"> &rarr; {Object}</span></h4>
     
 
     
@@ -2427,7 +2362,7 @@ placed on the server, where your GeoServer is running.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="src_datastore.js.html">src/datastore.js</a>, <a href="src_datastore.js.html#line117">line 117</a>
+        <a href="src_datastore.js.html">src/datastore.js</a>, <a href="src_datastore.js.html#line113">line 113</a>
     </li></ul></dd>
     
 
@@ -2456,7 +2391,7 @@ placed on the server, where your GeoServer is running.
 
         
 <div class="param-desc">
-    An object containing store details or 'false'
+    An object containing store details or undefined if it cannot be found
 </div>
 
 
@@ -2468,9 +2403,6 @@ placed on the server, where your GeoServer is running.
     <dd>
         
 <span class="param-type">Object</span>
-|
-
-<span class="param-type">Boolean</span>
 
 
     </dd>
@@ -2488,7 +2420,7 @@ placed on the server, where your GeoServer is running.
     
 
     
-    <h4 class="name" id="getCoverageStores"><span class="type-signature">(async) </span>getCoverageStores<span class="signature">(workspace)</span><span class="type-signature"> &rarr; {Object|Boolean}</span></h4>
+    <h4 class="name" id="getCoverageStores"><span class="type-signature">(async) </span>getCoverageStores<span class="signature">(workspace)</span><span class="type-signature"> &rarr; {Object}</span></h4>
     
 
     
@@ -2618,7 +2550,7 @@ placed on the server, where your GeoServer is running.
 
         
 <div class="param-desc">
-    An object containing store details or 'false'
+    An object containing store details
 </div>
 
 
@@ -2630,9 +2562,6 @@ placed on the server, where your GeoServer is running.
     <dd>
         
 <span class="param-type">Object</span>
-|
-
-<span class="param-type">Boolean</span>
 
 
     </dd>
@@ -2650,7 +2579,7 @@ placed on the server, where your GeoServer is running.
     
 
     
-    <h4 class="name" id="getDataStore"><span class="type-signature">(async) </span>getDataStore<span class="signature">(workspace, dataStore)</span><span class="type-signature"> &rarr; {Object|Boolean}</span></h4>
+    <h4 class="name" id="getDataStore"><span class="type-signature">(async) </span>getDataStore<span class="signature">(workspace, dataStore)</span><span class="type-signature"> &rarr; {Object}</span></h4>
     
 
     
@@ -2774,7 +2703,7 @@ placed on the server, where your GeoServer is running.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="src_datastore.js.html">src/datastore.js</a>, <a href="src_datastore.js.html#line105">line 105</a>
+        <a href="src_datastore.js.html">src/datastore.js</a>, <a href="src_datastore.js.html#line101">line 101</a>
     </li></ul></dd>
     
 
@@ -2803,7 +2732,7 @@ placed on the server, where your GeoServer is running.
 
         
 <div class="param-desc">
-    An object containing store details or 'false'
+    An object containing store details or undefined if it cannot be found
 </div>
 
 
@@ -2815,9 +2744,6 @@ placed on the server, where your GeoServer is running.
     <dd>
         
 <span class="param-type">Object</span>
-|
-
-<span class="param-type">Boolean</span>
 
 
     </dd>
@@ -2835,7 +2761,7 @@ placed on the server, where your GeoServer is running.
     
 
     
-    <h4 class="name" id="getDataStores"><span class="type-signature">(async) </span>getDataStores<span class="signature">(workspace)</span><span class="type-signature"> &rarr; {Object|Boolean}</span></h4>
+    <h4 class="name" id="getDataStores"><span class="type-signature">(async) </span>getDataStores<span class="signature">(workspace)</span><span class="type-signature"> &rarr; {Object}</span></h4>
     
 
     
@@ -2965,7 +2891,7 @@ placed on the server, where your GeoServer is running.
 
         
 <div class="param-desc">
-    An object containing store details or 'false'
+    An object containing store details
 </div>
 
 
@@ -2977,9 +2903,6 @@ placed on the server, where your GeoServer is running.
     <dd>
         
 <span class="param-type">Object</span>
-|
-
-<span class="param-type">Boolean</span>
 
 
     </dd>
@@ -2997,7 +2920,7 @@ placed on the server, where your GeoServer is running.
     
 
     
-    <h4 class="name" id="getWmsStore"><span class="type-signature">(async) </span>getWmsStore<span class="signature">(workspace, wmsStore)</span><span class="type-signature"> &rarr; {Object|Boolean}</span></h4>
+    <h4 class="name" id="getWmsStore"><span class="type-signature">(async) </span>getWmsStore<span class="signature">(workspace, wmsStore)</span><span class="type-signature"> &rarr; {Object}</span></h4>
     
 
     
@@ -3121,7 +3044,7 @@ placed on the server, where your GeoServer is running.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="src_datastore.js.html">src/datastore.js</a>, <a href="src_datastore.js.html#line129">line 129</a>
+        <a href="src_datastore.js.html">src/datastore.js</a>, <a href="src_datastore.js.html#line126">line 126</a>
     </li></ul></dd>
     
 
@@ -3150,7 +3073,7 @@ placed on the server, where your GeoServer is running.
 
         
 <div class="param-desc">
-    An object containing store details or 'false'
+    An object containing store details or undefined if it cannot be found
 </div>
 
 
@@ -3162,9 +3085,6 @@ placed on the server, where your GeoServer is running.
     <dd>
         
 <span class="param-type">Object</span>
-|
-
-<span class="param-type">Boolean</span>
 
 
     </dd>
@@ -3182,7 +3102,7 @@ placed on the server, where your GeoServer is running.
     
 
     
-    <h4 class="name" id="getWmsStores"><span class="type-signature">(async) </span>getWmsStores<span class="signature">(workspace)</span><span class="type-signature"> &rarr; {Object|Boolean}</span></h4>
+    <h4 class="name" id="getWmsStores"><span class="type-signature">(async) </span>getWmsStores<span class="signature">(workspace)</span><span class="type-signature"> &rarr; {Object}</span></h4>
     
 
     
@@ -3312,7 +3232,7 @@ placed on the server, where your GeoServer is running.
 
         
 <div class="param-desc">
-    An object containing store details or 'false'
+    An object containing store details
 </div>
 
 
@@ -3324,9 +3244,6 @@ placed on the server, where your GeoServer is running.
     <dd>
         
 <span class="param-type">Object</span>
-|
-
-<span class="param-type">Boolean</span>
 
 
     </dd>
@@ -3344,7 +3261,7 @@ placed on the server, where your GeoServer is running.
     
 
     
-    <h4 class="name" id="getWmtsStore"><span class="type-signature">(async) </span>getWmtsStore<span class="signature">(workspace, wmtsStore)</span><span class="type-signature"> &rarr; {Object|Boolean}</span></h4>
+    <h4 class="name" id="getWmtsStore"><span class="type-signature">(async) </span>getWmtsStore<span class="signature">(workspace, wmtsStore)</span><span class="type-signature"> &rarr; {Object}</span></h4>
     
 
     
@@ -3468,7 +3385,7 @@ placed on the server, where your GeoServer is running.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="src_datastore.js.html">src/datastore.js</a>, <a href="src_datastore.js.html#line141">line 141</a>
+        <a href="src_datastore.js.html">src/datastore.js</a>, <a href="src_datastore.js.html#line138">line 138</a>
     </li></ul></dd>
     
 
@@ -3497,8 +3414,7 @@ placed on the server, where your GeoServer is running.
 
         
 <div class="param-desc">
-    An object containing store details or 'false'
-s
+    An object containing store details or undefined if it cannot be found
 </div>
 
 
@@ -3510,9 +3426,6 @@ s
     <dd>
         
 <span class="param-type">Object</span>
-|
-
-<span class="param-type">Boolean</span>
 
 
     </dd>
@@ -3530,7 +3443,7 @@ s
     
 
     
-    <h4 class="name" id="getWmtsStores"><span class="type-signature">(async) </span>getWmtsStores<span class="signature">(workspace)</span><span class="type-signature"> &rarr; {Object|Boolean}</span></h4>
+    <h4 class="name" id="getWmtsStores"><span class="type-signature">(async) </span>getWmtsStores<span class="signature">(workspace)</span><span class="type-signature"> &rarr; {Object}</span></h4>
     
 
     
@@ -3660,7 +3573,7 @@ s
 
         
 <div class="param-desc">
-    An object containing store details or 'false'
+    An object containing store details
 </div>
 
 
@@ -3672,9 +3585,6 @@ s
     <dd>
         
 <span class="param-type">Object</span>
-|
-
-<span class="param-type">Boolean</span>
 
 
     </dd>
@@ -3702,13 +3612,13 @@ s
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-DatastoreClient.html">DatastoreClient</a></li><li><a href="module-GeoServerRestClient.html">GeoServerRestClient</a></li><li><a href="module-ImageMosaicClient.html">ImageMosaicClient</a></li><li><a href="module-LayerClient.html">LayerClient</a></li><li><a href="module-NamespaceClient.html">NamespaceClient</a></li><li><a href="module-SecurityClient.html">SecurityClient</a></li><li><a href="module-SettingsClient.html">SettingsClient</a></li><li><a href="module-StyleClient.html">StyleClient</a></li><li><a href="module-WorkspaceClient.html">WorkspaceClient</a></li></ul><h3>Classes</h3><ul><li><a href="module-DatastoreClient.html">DatastoreClient</a></li><li><a href="module-GeoServerRestClient.html">GeoServerRestClient</a></li><li><a href="module-ImageMosaicClient.html">ImageMosaicClient</a></li><li><a href="module-LayerClient.html">LayerClient</a></li><li><a href="module-NamespaceClient.html">NamespaceClient</a></li><li><a href="module-SecurityClient.html">SecurityClient</a></li><li><a href="module-SettingsClient.html">SettingsClient</a></li><li><a href="module-StyleClient.html">StyleClient</a></li><li><a href="module-WorkspaceClient.html">WorkspaceClient</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-AboutClient.html">AboutClient</a></li><li><a href="module-DatastoreClient.html">DatastoreClient</a></li><li><a href="module-GeoServerRestClient.html">GeoServerRestClient</a></li><li><a href="module-ImageMosaicClient.html">ImageMosaicClient</a></li><li><a href="module-LayerClient.html">LayerClient</a></li><li><a href="module-NamespaceClient.html">NamespaceClient</a></li><li><a href="module-SecurityClient.html">SecurityClient</a></li><li><a href="module-SettingsClient.html">SettingsClient</a></li><li><a href="module-StyleClient.html">StyleClient</a></li><li><a href="module-WorkspaceClient.html">WorkspaceClient</a></li></ul><h3>Classes</h3><ul><li><a href="module-AboutClient.html">AboutClient</a></li><li><a href="module-DatastoreClient.html">DatastoreClient</a></li><li><a href="module-GeoServerRestClient.GeoServerRestClient.html">GeoServerRestClient</a></li><li><a href="module-ImageMosaicClient.html">ImageMosaicClient</a></li><li><a href="module-LayerClient.html">LayerClient</a></li><li><a href="module-NamespaceClient.html">NamespaceClient</a></li><li><a href="module-SecurityClient.html">SecurityClient</a></li><li><a href="module-SettingsClient.html">SettingsClient</a></li><li><a href="module-StyleClient.html">StyleClient</a></li><li><a href="module-WorkspaceClient.html">WorkspaceClient</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Tue Mar 15 2022 10:03:43 GMT+0000 (Coordinated Universal Time)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.10</a> on Wed Jun 01 2022 10:11:06 GMT+0000 (Coordinated Universal Time)
 </footer>
 
 <script> prettyPrint(); </script>

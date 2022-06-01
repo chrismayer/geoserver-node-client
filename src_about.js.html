@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Home</title>
+    <title>JSDoc: Source: src/about.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,55 +17,77 @@
 
 <div id="main">
 
-    <h1 class="page-title">Home</h1>
+    <h1 class="page-title">Source: src/about.js</h1>
 
     
 
 
 
     
-
-
-    <h3> </h3>
-
-
-
-
-
-
-
-
-
-
-    
-
-
-
-
     <section>
-        <article><h1>GeoServer Node Client</h1>
-<p>Node.js / JavaScript Client for the <a href="https://docs.geoserver.org/stable/en/user/rest/">GeoServer REST API</a>.</p>
-<h3>Meta information</h3>
-<p>Compatible with <a href="https://geoserver.org">GeoServer</a></p>
-<ul>
-<li>v2.20.x</li>
-<li>v2.19.x</li>
-<li>v2.18.x (no more maintained and officially deprecated)</li>
-<li>v2.17.x (no more maintained and officially deprecated)</li>
-</ul>
-<h3>Who do I talk to?</h3>
-<ul>
-<li>meggsimum (Christian Mayer) - info __at## meggsimum ~~dot** de</li>
-</ul>
-<h3>Credits</h3>
-<p>This project was initiated by <a href="https://meggsimum.de">meggsimum</a> within the <a href="https://www.bmvi.de/EN/Topics/Digital-Matters/mFund/mFund.html">mFund</a> research project <a href="https://sauber-projekt.de/">SAUBER</a> and is further developed in the mFund research project <a href="http://www.klips-projekt.de/">KLIPS</a>:</p>
-<p><img src="https://sauber-projekt.de/wp-content/uploads/2018/12/SAG_SAUBER_Logo_Dez3_transparent-1-e1543843688935.png" alt="SAUBER Logo" width="200"/></p>.
-<p><img src="http://www.klips-projekt.de/wp-content/uploads/2021/02/SAG_KLIPS-Logo_Jan21.png" alt="KLIPS Logo" width="200"/></p>.
-<img src="https://sauber-projekt.de/wp-content/uploads/2018/12/mfund-logo-download-e1547545420815-300x77.jpg" alt="mFund Logo" width="300"/>
-<img src="https://sauber-projekt.de/wp-content/uploads/2019/06/BMVI_Fz_2017_Office_Farbe_de_Bundestag-400x402.png" alt="BMVI Logo" height="200"/></article>
+        <article>
+            <pre class="prettyprint source linenums"><code>import fetch from 'node-fetch';
+import { GeoServerResponseError, getGeoServerResponseText } from './util/geoserver.js';
+
+/**
+ * Client for GeoServer "about" endpoint
+ *
+ * @module AboutClient
+ */
+export default class AboutClient {
+  /**
+   * Creates a GeoServer REST AboutClient instance.
+   *
+   * @param {String} url The URL of the GeoServer REST API endpoint
+   * @param {String} auth The Basic Authentication string
+   */
+  constructor (url, auth) {
+    this.url = url;
+    this.auth = auth;
+  }
+
+  /**
+   * Get the GeoServer version.
+   *
+   * @throws Error if request fails
+   *
+   * @returns {Object} The version of GeoServer
+   */
+  async getVersion () {
+    const url = this.url + 'about/version.json';
+    const response = await fetch(url, {
+      credentials: 'include',
+      method: 'GET',
+      headers: {
+        Authorization: this.auth
+      }
+    });
+
+    if (!response.ok) {
+      const geoServerResponse = await getGeoServerResponseText(response);
+      throw new GeoServerResponseError(null, geoServerResponse);
+    }
+    return response.json();
+  }
+
+  /**
+   * Checks if the configured GeoServer REST connection exists.
+   *
+   * @returns {Boolean} If the connection exists
+   */
+  async exists () {
+    let versionInfo;
+    try {
+      versionInfo = await this.getVersion();
+      return !!versionInfo
+    } catch (error) {
+      return false;
+    }
+  }
+}
+</code></pre>
+        </article>
     </section>
-
-
 
 
 
