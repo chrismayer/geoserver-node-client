@@ -1,7 +1,7 @@
 /* global describe:false, it:false, before:false, after:false */
 import { expect } from 'chai';
 import fs from 'fs';
-import { GeoServerRestClient } from '../geoserver-rest-client.js';
+import { GeoServerRestClient } from '../../geoserver-rest-client.js';
 
 const port = process.env.GEOSERVER_PORT || 8080;
 const url = `http://localhost:${port}/geoserver/rest/`;
